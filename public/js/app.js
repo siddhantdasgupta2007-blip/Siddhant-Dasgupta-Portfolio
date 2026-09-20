@@ -1,311 +1,225 @@
-/* =========================================================
-   SIDDHANT DASGUPTA
-   NEO-BRUTALIST PORTFOLIO
-   APP.JS
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-  "use strict";
 
-
-  /* =======================================================
-     01. ELEMENT REFERENCES
-     ======================================================= */
-
-  const body = document.body;
-
-  const navbar = document.querySelector(".navbar");
+  /* =========================
+     CUSTOM CURSOR
+  ========================= */
 
   const cursorDot = document.querySelector(".cursor-dot");
   const cursorRing = document.querySelector(".cursor-ring");
 
-  const menuButton = document.querySelector(".menu-button");
-  const mobileMenu = document.querySelector(".mobile-menu");
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
 
-  const navLinks = document.querySelectorAll(".nav-link");
-  const mobileLinks = document.querySelectorAll(".mobile-menu a");
+  let ringX = mouseX;
+  let ringY = mouseY;
 
-  const sections = document.querySelectorAll("main section[id]");
+  document.addEventListener("mousemove", (event) => {
 
-  const taglineLines = document.querySelectorAll(".tagline-line");
+    mouseX = event.clientX;
+    mouseY = event.clientY;
 
-  const footerYear = document.querySelector(".footer");
-
-
-  /* =======================================================
-     02. CUSTOM CURSOR
-     ======================================================= */
-
-  const supportsHover =
-    window.matchMedia("(hover: hover)").matches &&
-    window.matchMedia("(pointer: fine)").matches;
-
-  if (supportsHover && cursorDot && cursorRing) {
-
-    let mouseX = 0;
-    let mouseY = 0;
-
-    let ringX = 0;
-    let ringY = 0;
-
-
-    document.addEventListener("mousemove", (event) => {
-
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-
+    if (cursorDot) {
       cursorDot.style.left = `${mouseX}px`;
       cursorDot.style.top = `${mouseY}px`;
+    }
 
-    });
+  });
 
+  function animateCursor() {
 
-    const animateCursor = () => {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
 
-      ringX += (mouseX - ringX) * 0.16;
-      ringY += (mouseY - ringY) * 0.16;
-
+    if (cursorRing) {
       cursorRing.style.left = `${ringX}px`;
       cursorRing.style.top = `${ringY}px`;
+    }
 
-      requestAnimationFrame(animateCursor);
+    requestAnimationFrame(animateCursor);
+  }
 
-    };
-
-    animateCursor();
+  animateCursor();
 
 
-    const interactiveElements = document.querySelectorAll(
-      "a, button, .skill-card, .photo-frame, .sticker, .social-box"
+  const interactiveElements = document.querySelectorAll(
+    "a, button, .skill-card, .certificate-btn"
+  );
+
+  interactiveElements.forEach((element) => {
+
+    element.addEventListener("mouseenter", () => {
+      cursorRing?.classList.add("hover");
+    });
+
+    element.addEventListener("mouseleave", () => {
+      cursorRing?.classList.remove("hover");
+    });
+
+  });
+
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  function closeMobileMenu() {
+
+    mobileMenu?.classList.remove("open");
+
+    menuToggle?.setAttribute(
+      "aria-expanded",
+      "false"
     );
 
-
-    interactiveElements.forEach((element) => {
-
-      element.addEventListener("mouseenter", () => {
-        cursorRing.classList.add("hover");
-      });
-
-      element.addEventListener("mouseleave", () => {
-        cursorRing.classList.remove("hover");
-      });
-
-    });
-
   }
 
+  menuToggle?.addEventListener("click", () => {
 
-  /* =======================================================
-     03. MOBILE MENU
-     ======================================================= */
+    const isOpen =
+      mobileMenu?.classList.toggle("open");
 
-  const closeMobileMenu = () => {
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(Boolean(isOpen))
+    );
 
-    if (!menuButton || !mobileMenu) {
-      return;
-    }
-
-    menuButton.classList.remove("open");
-
-    mobileMenu.classList.remove("open");
-
-    menuButton.setAttribute("aria-expanded", "false");
-
-    body.classList.remove("menu-open");
-
-  };
+  });
 
 
-  if (menuButton && mobileMenu) {
-
-    menuButton.setAttribute("aria-expanded", "false");
-
-
-    menuButton.addEventListener("click", () => {
-
-      const isOpen = mobileMenu.classList.toggle("open");
-
-      menuButton.classList.toggle("open", isOpen);
-
-      menuButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-      body.classList.toggle("menu-open", isOpen);
-
-    });
-
-
-    mobileLinks.forEach((link) => {
+  document.querySelectorAll(".mobile-link, .mobile-resume")
+    .forEach((link) => {
 
       link.addEventListener("click", () => {
-
         closeMobileMenu();
-
       });
 
     });
 
 
-    document.addEventListener("click", (event) => {
+  document.addEventListener("click", (event) => {
 
-      if (!mobileMenu.classList.contains("open")) {
-        return;
-      }
+    if (
+      mobileMenu?.classList.contains("open") &&
+      !mobileMenu.contains(event.target) &&
+      !menuToggle?.contains(event.target)
+    ) {
+      closeMobileMenu();
+    }
 
-      const target = event.target;
-
-      if (
-        target instanceof Node &&
-        !mobileMenu.contains(target) &&
-        !menuButton.contains(target)
-      ) {
-        closeMobileMenu();
-      }
-
-    });
+  });
 
 
-    window.addEventListener("resize", () => {
+  window.addEventListener("resize", () => {
 
-      if (window.innerWidth > 760) {
-        closeMobileMenu();
-      }
+    if (window.innerWidth > 800) {
+      closeMobileMenu();
+    }
 
-    });
+  });
+
+
+  /* =========================
+     NAVBAR SCROLL
+  ========================= */
+
+  const navbar = document.querySelector(".navbar");
+
+  function updateNavbar() {
+
+    if (window.scrollY > 30) {
+      navbar?.classList.add("scrolled");
+    } else {
+      navbar?.classList.remove("scrolled");
+    }
 
   }
-
-
-  /* =======================================================
-     04. NAVBAR SCROLL EFFECT
-     ======================================================= */
-
-  const updateNavbar = () => {
-
-    if (!navbar) {
-      return;
-    }
-
-    if (window.scrollY > 20) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-
-  };
 
   updateNavbar();
 
-  window.addEventListener(
-    "scroll",
-    updateNavbar,
-    { passive: true }
-  );
+  window.addEventListener("scroll", updateNavbar, {
+    passive: true
+  });
 
 
-  /* =======================================================
-     05. ACTIVE NAVIGATION
-     ======================================================= */
+  /* =========================
+     ACTIVE NAV
+  ========================= */
 
-  const updateActiveSection = () => {
+  const sections = document.querySelectorAll("main section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  function updateActiveNav() {
 
     const scrollPosition =
-      window.scrollY +
-      window.innerHeight * 0.35;
+      window.scrollY + 180;
 
-
-    let currentSection = "";
-
+    let currentSection = "home";
 
     sections.forEach((section) => {
 
-      const sectionTop = section.offsetTop;
-
-      const sectionBottom =
-        sectionTop + section.offsetHeight;
-
-
       if (
-        scrollPosition >= sectionTop &&
-        scrollPosition < sectionBottom
+        scrollPosition >= section.offsetTop
       ) {
         currentSection = section.id;
       }
 
     });
 
-
-    if (!currentSection) {
-      return;
-    }
-
-
     navLinks.forEach((link) => {
 
-      const href = link.getAttribute("href");
+      const target =
+        link.getAttribute("href");
 
       link.classList.toggle(
         "active",
-        href === `#${currentSection}`
+        target === `#${currentSection}`
       );
 
     });
 
-  };
+  }
+
+  window.addEventListener("scroll", updateActiveNav, {
+    passive: true
+  });
+
+  updateActiveNav();
 
 
-  updateActiveSection();
+  /* =========================
+     SMOOTH ANCHOR SCROLL
+  ========================= */
 
-
-  window.addEventListener(
-    "scroll",
-    updateActiveSection,
-    { passive: true }
-  );
-
-
-  /* =======================================================
-     06. SMOOTH ANCHOR NAVIGATION
-     ======================================================= */
-
-  const anchorLinks = document.querySelectorAll(
-    'a[href^="#"]'
-  );
-
-
-  anchorLinks.forEach((link) => {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
     link.addEventListener("click", (event) => {
 
-      const href = link.getAttribute("href");
+      const targetId =
+        link.getAttribute("href");
 
-      if (!href || href === "#") {
+      if (!targetId || targetId === "#") {
         return;
       }
 
-
-      const target = document.querySelector(href);
+      const target =
+        document.querySelector(targetId);
 
       if (!target) {
         return;
       }
 
-
       event.preventDefault();
-
 
       const navbarHeight =
         navbar?.offsetHeight || 0;
 
-
       const targetPosition =
         target.getBoundingClientRect().top +
         window.scrollY -
-        navbarHeight +
-        2;
-
+        navbarHeight;
 
       window.scrollTo({
         top: targetPosition,
@@ -317,31 +231,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* =======================================================
-     07. HERO TAGLINE ROTATION
-     ======================================================= */
+  /* =========================
+     HERO TAGLINE ROTATION
+  ========================= */
+
+  const taglineLines =
+    document.querySelectorAll(".tagline-line");
+
+  let currentTagline = 0;
+
+  function showTagline(index) {
+
+    taglineLines.forEach((line, i) => {
+
+      line.classList.toggle(
+        "active",
+        i === index
+      );
+
+    });
+
+  }
 
   if (taglineLines.length > 0) {
 
-    let currentTagline = 0;
-
-
-    const showTagline = (index) => {
-
-      taglineLines.forEach((line, i) => {
-
-        line.style.display =
-          i === index
-            ? "block"
-            : "none";
-
-      });
-
-    };
-
-
-    showTagline(currentTagline);
-
+    showTagline(0);
 
     setInterval(() => {
 
@@ -356,394 +270,205 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =======================================================
-     08. SCROLL REVEAL
-     ======================================================= */
+  /* =========================
+     SCROLL REVEAL
+  ========================= */
 
-  const revealElements = document.querySelectorAll(
-    ".about-content, " +
-    ".about-visual, " +
-    ".skill-card, " +
-    ".achievement-card, " +
-    ".education-card, " +
-    ".contact-content, " +
-    ".contact-links"
+  const revealTargets = document.querySelectorAll(
+    ".about-content, .about-image-wrap, .skill-card, .achievement-wrapper, .education-item, .contact-heading, .contact-links"
   );
 
-
-  revealElements.forEach((element) => {
-
+  revealTargets.forEach((element) => {
     element.classList.add("reveal");
-
   });
 
 
-  if ("IntersectionObserver" in window) {
+  const revealObserver =
+    new IntersectionObserver(
+      (entries, observer) => {
 
-    const revealObserver =
-      new IntersectionObserver(
-        (entries, observer) => {
+        entries.forEach((entry) => {
 
-          entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
 
-            if (!entry.isIntersecting) {
-              return;
-            }
+          entry.target.classList.add("visible");
 
+          observer.unobserve(entry.target);
 
-            entry.target.classList.add("visible");
-
-            observer.unobserve(entry.target);
-
-          });
-
-        },
-        {
-          threshold: 0.12,
-          rootMargin: "0px 0px -50px 0px"
-        }
-      );
-
-
-    revealElements.forEach((element) => {
-
-      revealObserver.observe(element);
-
-    });
-
-  } else {
-
-    revealElements.forEach((element) => {
-
-      element.classList.add("visible");
-
-    });
-
-  }
-
-
-  /* =======================================================
-     09. STAGGER SKILL CARDS
-     ======================================================= */
-
-  const skillCards =
-    document.querySelectorAll(".skill-card");
-
-
-  skillCards.forEach((card, index) => {
-
-    card.style.transitionDelay =
-      `${index * 80}ms`;
-
-  });
-
-
-  /* =======================================================
-     10. STAGGER EDUCATION CARDS
-     ======================================================= */
-
-  const educationCards =
-    document.querySelectorAll(".education-card");
-
-
-  educationCards.forEach((card, index) => {
-
-    card.style.transitionDelay =
-      `${index * 120}ms`;
-
-  });
-
-
-  /* =======================================================
-     11. PHOTO PARALLAX
-     ======================================================= */
-
-  const heroVisual =
-    document.querySelector(".hero-visual");
-
-  const photoFrame =
-    document.querySelector(".photo-frame");
-
-  const photoBackdrop =
-    document.querySelector(".photo-backdrop");
-
-
-  if (
-    supportsHover &&
-    heroVisual &&
-    photoFrame &&
-    photoBackdrop
-  ) {
-
-    heroVisual.addEventListener(
-      "mousemove",
-      (event) => {
-
-        const rect =
-          heroVisual.getBoundingClientRect();
-
-
-        const x =
-          (event.clientX - rect.left) /
-          rect.width -
-          0.5;
-
-
-        const y =
-          (event.clientY - rect.top) /
-          rect.height -
-          0.5;
-
-
-        const rotateX =
-          y * -4;
-
-
-        const rotateY =
-          x * 4;
-
-
-        photoFrame.style.transform =
-          `rotate(-3deg) perspective(900px) ` +
-          `rotateX(${rotateX}deg) ` +
-          `rotateY(${rotateY}deg)`;
-
-
-        photoBackdrop.style.transform =
-          `rotate(3deg) translate(${x * 8}px, ${y * 8}px)`;
-
-      }
-    );
-
-
-    heroVisual.addEventListener(
-      "mouseleave",
-      () => {
-
-        photoFrame.style.transform =
-          "rotate(-3deg)";
-
-        photoBackdrop.style.transform =
-          "rotate(3deg)";
-
-      }
-    );
-
-  }
-
-
-  /* =======================================================
-     12. RANDOMIZED STICKER TILT
-     ======================================================= */
-
-  const tags =
-    document.querySelectorAll(".vertical-tags .tag");
-
-
-  tags.forEach((tag, index) => {
-
-    const rotations = [
-      -2,
-      2,
-      -1,
-      2,
-      -2
-    ];
-
-    tag.style.transform =
-      `rotate(${rotations[index % rotations.length]}deg)`;
-
-  });
-
-
-  /* =======================================================
-     13. SKILL CARD MOUSE EFFECT
-     ======================================================= */
-
-  if (supportsHover) {
-
-    skillCards.forEach((card) => {
-
-      card.addEventListener(
-        "mousemove",
-        (event) => {
-
-          const rect =
-            card.getBoundingClientRect();
-
-
-          const x =
-            (event.clientX - rect.left) /
-            rect.width;
-
-
-          const y =
-            (event.clientY - rect.top) /
-            rect.height;
-
-
-          const moveX =
-            (x - 0.5) * 4;
-
-
-          const moveY =
-            (y - 0.5) * 4;
-
-
-          card.style.transform =
-            `translate(${moveX}px, ${moveY}px)`;
-
-        }
-      );
-
-
-      card.addEventListener(
-        "mouseleave",
-        () => {
-
-          card.style.transform = "";
-
-        }
-      );
-
-    });
-
-  }
-
-
-  /* =======================================================
-     14. CERTIFICATE BUTTON FEEDBACK
-     ======================================================= */
-
-  const certificateButton =
-    document.querySelector(".certificate-button");
-
-
-  if (certificateButton) {
-
-    certificateButton.addEventListener(
-      "click",
-      () => {
-
-        certificateButton.classList.add("clicked");
-
-
-        setTimeout(() => {
-
-          certificateButton.classList.remove(
-            "clicked"
-          );
-
-        }, 500);
-
-      }
-    );
-
-  }
-
-
-  /* =======================================================
-     15. BACK TO TOP
-     ======================================================= */
-
-  const backToTop =
-    document.querySelector('.footer a[href="#home"]');
-
-
-  if (backToTop) {
-
-    backToTop.addEventListener(
-      "click",
-      (event) => {
-
-        event.preventDefault();
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
         });
 
+      },
+      {
+        threshold: 0.12
       }
     );
 
+
+  revealTargets.forEach((element) => {
+    revealObserver.observe(element);
+  });
+
+
+  /* =========================
+     SKILL STAGGER
+  ========================= */
+
+  document.querySelectorAll(".skill-card")
+    .forEach((card, index) => {
+
+      card.style.transitionDelay =
+        `${index * 80}ms`;
+
+    });
+
+
+  /* =========================
+     EDUCATION STAGGER
+  ========================= */
+
+  document.querySelectorAll(".education-item")
+    .forEach((item, index) => {
+
+      item.style.transitionDelay =
+        `${index * 100}ms`;
+
+    });
+
+
+  /* =========================
+     HERO PHOTO PARALLAX
+  ========================= */
+
+  const heroPhoto =
+    document.querySelector(".photo-frame");
+
+  if (
+    heroPhoto &&
+    window.matchMedia("(hover: hover)").matches
+  ) {
+
+    document.addEventListener("mousemove", (event) => {
+
+      if (window.innerWidth < 900) {
+        return;
+      }
+
+      const x =
+        (event.clientX / window.innerWidth - 0.5) * 8;
+
+      const y =
+        (event.clientY / window.innerHeight - 0.5) * 8;
+
+      heroPhoto.style.transform =
+        `translate(${x}px, ${y}px) rotate(-3deg)`;
+
+    });
+
   }
 
 
-  /* =======================================================
-     16. CURRENT YEAR
-     ======================================================= */
+  /* =========================
+     RANDOM TAG ROTATION
+  ========================= */
 
-  if (footerYear) {
+  document.querySelectorAll(".vertical-tags span")
+    .forEach((tag, index) => {
 
-    const year =
+      const rotations = [-2, 1, -1, 2, -2];
+
+      tag.style.transform =
+        `rotate(${rotations[index % rotations.length]}deg)`;
+
+    });
+
+
+  /* =========================
+     CERTIFICATE BUTTON
+  ========================= */
+
+  const certificateButton =
+    document.querySelector(".certificate-btn");
+
+  certificateButton?.addEventListener("click", () => {
+
+    certificateButton.classList.add("clicked");
+
+    setTimeout(() => {
+      certificateButton.classList.remove("clicked");
+    }, 500);
+
+  });
+
+
+  /* =========================
+     BACK TO TOP
+  ========================= */
+
+  const backTop =
+    document.querySelector(".back-top");
+
+  backTop?.addEventListener("click", (event) => {
+
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  });
+
+
+  /* =========================
+     CURRENT YEAR
+  ========================= */
+
+  const currentYear =
+    document.querySelector("#current-year");
+
+  if (currentYear) {
+    currentYear.textContent =
       new Date().getFullYear();
-
-    footerYear.innerHTML =
-      footerYear.innerHTML.replace(
-        /©\s*\d{4}/,
-        `© ${year}`
-      );
-
   }
 
 
-  /* =======================================================
-     17. IMAGE ERROR HANDLING
-     ======================================================= */
+  /* =========================
+     PROFILE IMAGE CHECK
+  ========================= */
 
-  const profileImages =
-    document.querySelectorAll(
-      'img[src="/images/siddhu.jpg"]'
-    );
+  document.querySelectorAll("img")
+    .forEach((image) => {
 
-
-  profileImages.forEach((image) => {
-
-    image.addEventListener(
-      "error",
-      () => {
+      image.addEventListener("error", () => {
 
         console.warn(
-          "Profile image could not be loaded. " +
-          "Make sure /public/images/siddhu.jpg exists."
+          `Image failed to load: ${image.src}`
         );
 
-      }
-    );
+      });
 
-  });
+    });
 
 
-  /* =======================================================
-     18. KEYBOARD ACCESSIBILITY
-     ======================================================= */
+  /* =========================
+     ESCAPE KEY
+  ========================= */
 
-  document.addEventListener(
-    "keydown",
-    (event) => {
+  document.addEventListener("keydown", (event) => {
 
-      if (
-        event.key === "Escape" &&
-        mobileMenu &&
-        mobileMenu.classList.contains("open")
-      ) {
-
-        closeMobileMenu();
-
-      }
-
+    if (event.key === "Escape") {
+      closeMobileMenu();
     }
-  );
-
-
-  /* =======================================================
-     19. PAGE LOADED
-     ======================================================= */
-
-  requestAnimationFrame(() => {
-
-    document.body.classList.add("page-loaded");
 
   });
+
+
+  /* =========================
+     PAGE LOADED
+  ========================= */
+
+  document.body.classList.add("page-loaded");
 
 });

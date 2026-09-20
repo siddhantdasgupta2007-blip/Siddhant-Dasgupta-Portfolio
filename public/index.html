@@ -13,14 +13,18 @@
     content="Siddhant Dasgupta — BCA student, developer and AI enthusiast."
   />
 
+  <meta
+    name="author"
+    content="Siddhant Dasgupta"
+  />
+
   <title>Siddhant Dasgupta — Developer & AI Enthusiast</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -29,185 +33,143 @@
 
 <body>
 
-  <!-- =========================
-       CUSTOM CURSOR
-  ========================== -->
-
+  <!-- CUSTOM CURSOR -->
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
 
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
-
+  <!-- NAVBAR -->
   <header class="navbar">
+    <div class="nav-inner">
 
-    <a href="#home" class="nav-logo">
-      <span class="logo-box">SD</span>
-      <span class="logo-name">SIDDHANT DASGUPTA</span>
-    </a>
+      <a href="#home" class="logo">SD</a>
 
-    <nav class="nav-links">
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active">HOME</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#skills" class="nav-link">SKILLS</a>
+        <a href="#achievements" class="nav-link">ACHIEVEMENTS</a>
+        <a href="#education" class="nav-link">EDUCATION</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
+      </nav>
 
-      <a href="#home" class="nav-link active">
-        HOME
+      <a
+        href="/resume/Siddhant_Dasgupta_Resume.pdf"
+        class="nav-cta"
+        download
+      >
+        RESUME <span>↓</span>
       </a>
 
-      <a href="#about" class="nav-link">
-        ABOUT
+      <button
+        class="menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+    <div class="mobile-menu">
+
+      <a href="#home" class="mobile-link">HOME</a>
+      <a href="#about" class="mobile-link">ABOUT</a>
+      <a href="#skills" class="mobile-link">SKILLS</a>
+      <a href="#achievements" class="mobile-link">ACHIEVEMENTS</a>
+      <a href="#education" class="mobile-link">EDUCATION</a>
+      <a href="#contact" class="mobile-link">CONTACT</a>
+
+      <a
+        href="/resume/Siddhant_Dasgupta_Resume.pdf"
+        class="mobile-resume"
+        download
+      >
+        DOWNLOAD RESUME ↓
       </a>
 
-      <a href="#skills" class="nav-link">
-        SKILLS
-      </a>
-
-      <a href="#achievements" class="nav-link">
-        ACHIEVEMENTS
-      </a>
-
-      <a href="#education" class="nav-link">
-        EDUCATION
-      </a>
-
-      <a href="#contact" class="nav-link">
-        CONTACT
-      </a>
-
-    </nav>
-
-    <a href="#contact" class="nav-talk">
-      LET'S TALK <span>→</span>
-    </a>
-
-    <button
-      class="menu-button"
-      aria-label="Open navigation menu"
-      type="button"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
+    </div>
   </header>
-
-
-  <!-- =========================
-       MOBILE MENU
-  ========================== -->
-
-  <div class="mobile-menu">
-
-    <a href="#home">HOME</a>
-    <a href="#about">ABOUT</a>
-    <a href="#skills">SKILLS</a>
-    <a href="#achievements">ACHIEVEMENTS</a>
-    <a href="#education">EDUCATION</a>
-    <a href="#contact">CONTACT</a>
-
-  </div>
 
 
   <main>
 
-    <!-- =========================
-         HERO
-    ========================== -->
-
+    <!-- HERO -->
     <section id="home" class="hero section">
 
       <div class="hero-grid">
 
-        <!-- LEFT SIDE -->
+        <div class="hero-left">
 
-        <div class="hero-content">
-
-          <div class="hero-eyebrow">
-            <span class="pink-dot"></span>
-
-            <span>
-              BCA STUDENT
-            </span>
-
-            <span class="dot-separator">•</span>
-
-            <span>
-              DEVELOPER
-            </span>
-
-            <span class="dot-separator">•</span>
-
-            <span>
-              AI ENTHUSIAST
-            </span>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            BCA STUDENT • DEVELOPER • AI ENTHUSIAST
           </div>
 
-
-          <h1 class="hero-name">
-            <span>SIDDHANT</span>
+          <h1 class="hero-title">
+            SIDDHANT
             <span>DASGUPTA</span>
           </h1>
 
-
-          <div class="hero-underline"></div>
-
-
-          <!-- ROTATING TAGLINE -->
-
           <div class="hero-tagline">
 
-            <div class="tagline-line">
-              I build and experiment with
-              <span class="highlight yellow">AI.</span>
-            </div>
+            <p class="tagline-line active">
+              I build and experiment with AI.
+            </p>
 
-            <div class="tagline-line">
-              I explore modern
-              <span class="highlight pink">software</span>
-              technologies.
-            </div>
+            <p class="tagline-line">
+              I explore modern software technologies.
+            </p>
 
-            <div class="tagline-line">
-              I turn ideas into
-              <span class="highlight orange">working prototypes.</span>
-            </div>
+            <p class="tagline-line">
+              I turn ideas into working prototypes.
+            </p>
 
-            <div class="tagline-line">
-              I <span class="highlight blue">learn</span>
-              by building.
-            </div>
+            <p class="tagline-line">
+              I learn by building.
+            </p>
 
           </div>
 
+          <div class="hero-actions">
 
-          <!-- CTA -->
-
-          <div class="hero-buttons">
-
-            <a href="#skills" class="brutal-button primary">
+            <a
+              href="#skills"
+              class="btn btn-primary"
+            >
               VIEW MY SKILLS
               <span>→</span>
             </a>
 
-            <a href="#contact" class="brutal-button secondary">
+            <a
+              href="#contact"
+              class="btn btn-secondary"
+            >
               LET'S CONNECT
               <span>→</span>
+            </a>
+
+            <a
+              href="/resume/Siddhant_Dasgupta_Resume.pdf"
+              class="btn btn-resume"
+              download
+            >
+              DOWNLOAD RESUME
+              <span>↓</span>
             </a>
 
           </div>
 
 
-          <!-- SOCIALS -->
-
-          <div class="hero-socials">
+          <div class="social-links">
 
             <a
               href="https://github.com/siddhantdasgupta2007-blip"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-box"
-              aria-label="GitHub"
+              class="social-link"
             >
               GH
             </a>
@@ -216,24 +178,21 @@
               href="https://www.linkedin.com/in/siddhant-dasgupta-837867214"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-box"
-              aria-label="LinkedIn"
+              class="social-link"
             >
               IN
             </a>
 
             <a
               href="mailto:siddhantdasgupta2007@gmail.com"
-              class="social-box"
-              aria-label="Email"
+              class="social-link"
             >
               @
             </a>
 
             <a
               href="tel:7838595339"
-              class="social-box"
-              aria-label="Phone"
+              class="social-link"
             >
               ☎
             </a>
@@ -241,41 +200,17 @@
           </div>
 
 
-          <!-- SMALL QUOTE -->
-
-          <div class="mini-quote">
-            <span>GOOD</span>
-            <span>IDEAS</span>
-            <span>BETTER</span>
-            <span>EXECUTION.</span>
+          <div class="hero-quote">
+            GOOD IDEAS.
+            <span>BETTER EXECUTION.</span>
           </div>
 
         </div>
 
 
-        <!-- RIGHT SIDE / PHOTO -->
-
-        <div class="hero-visual">
-
-          <!-- lime background panel -->
+        <div class="hero-right">
 
           <div class="photo-backdrop"></div>
-
-
-          <!-- pink sticker -->
-
-          <div class="sticker sticker-build">
-            BUILD
-            <span>→</span>
-            BREAK
-            <span>→</span>
-            LEARN
-            <span>→</span>
-            REPEAT
-          </div>
-
-
-          <!-- photo -->
 
           <div class="photo-frame">
 
@@ -286,53 +221,30 @@
 
           </div>
 
-
-          <!-- white sticker -->
-
-          <div class="sticker sticker-mindset">
-            SAME
-            <br />
-            STUDENT.
-            <br />
-            <strong>DIFFERENT</strong>
-            <br />
-            MINDSET.
+          <div class="sticker sticker-build">
+            BUILD<br />
+            <span>→</span>
           </div>
 
-
-          <!-- vertical tags -->
+          <div class="sticker sticker-mindset">
+            LEARN.<br />
+            BUILD.<br />
+            IMPROVE.
+          </div>
 
           <div class="vertical-tags">
 
-            <span class="tag yellow-tag">
-              AI
-            </span>
-
-            <span class="tag pink-tag">
-              CODE
-            </span>
-
-            <span class="tag orange-tag">
-              LEARN
-            </span>
-
-            <span class="tag blue-tag">
-              BUILD
-            </span>
-
-            <span class="tag cyan-tag">
-              IMPROVE
-            </span>
+            <span>AI</span>
+            <span>CODE</span>
+            <span>LEARN</span>
+            <span>BUILD</span>
+            <span>IMPROVE</span>
 
           </div>
 
-
-          <!-- bottom sticker -->
-
           <div class="photo-caption">
-            NEW IDEAS
-            <br />
-            BIGGER POSSIBILITIES
+            CURRENTLY BUILDING<br />
+            MY WAY FORWARD.
           </div>
 
         </div>
@@ -340,54 +252,24 @@
       </div>
 
 
-      <!-- =========================
-           HERO INFO BAR
-      ========================== -->
-
       <div class="hero-info-bar">
 
-        <div class="info-block">
-
-          <span class="info-label">
-            CURRENTLY LEARNING:
-          </span>
-
-          <strong>
-            BUILDING • EXPLORING • IMPROVING
-          </strong>
-
+        <div>
+          <span>01</span>
+          CURRENTLY LEARNING
+          <strong>BUILDING • EXPLORING • IMPROVING</strong>
         </div>
 
-
-        <div class="info-divider"></div>
-
-
-        <div class="info-block info-center">
-
-          <span class="info-symbol">✦</span>
-
-          <strong>
-            TURNING IDEAS
-            <br />
-            INTO IMPACT
-          </strong>
-
+        <div>
+          <span>02</span>
+          MINDSET
+          <strong>TURNING IDEAS INTO IMPACT</strong>
         </div>
 
-
-        <div class="info-divider"></div>
-
-
-        <div class="info-block">
-
-          <span class="info-symbol">⌖</span>
-
-          <strong>
-            BASED IN
-            <br />
-            NEW DELHI, INDIA
-          </strong>
-
+        <div>
+          <span>03</span>
+          BASED IN
+          <strong>NEW DELHI, INDIA</strong>
         </div>
 
       </div>
@@ -395,35 +277,35 @@
     </section>
 
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+    <!-- ABOUT -->
+    <section id="about" class="section about-section">
 
-    <section id="about" class="about section">
+      <div class="section-header">
 
-      <div class="section-number">
-        01 / ABOUT ME
+        <div class="section-number">
+          01 / ABOUT
+        </div>
+
+        <div class="section-line"></div>
+
       </div>
+
 
       <div class="about-grid">
 
-        <div class="about-visual">
+        <div class="about-image-wrap">
 
-          <div class="about-image-frame">
+          <div class="about-image-placeholder">
 
-           <div class="about-image-placeholder">
-  <img
-    src="/images/siddhu.jpg"
-    alt="Siddhant Dasgupta"
-  />
-</div>
+            <img
+              src="/images/siddhu.jpg"
+              alt="Siddhant Dasgupta"
+            />
 
           </div>
 
-          <div class="about-sticker">
-            ABOUT
-            <br />
-            ME →
+          <div class="about-label">
+            THAT'S ME →
           </div>
 
         </div>
@@ -431,26 +313,24 @@
 
         <div class="about-content">
 
-          <div class="section-kicker">
-            A STUDENT WHO
+          <div class="about-sticker">
+            HELLO THERE!
           </div>
 
           <h2>
-            LOVES TO
-            <br />
-            <span>BUILD.</span>
+            I LIKE
+            <span>BUILDING</span>
+            THINGS.
           </h2>
 
-          <div class="about-line"></div>
-
           <p>
-            I'm Siddhant Dasgupta, a second-year BCA student at
-            Bharati Vidyapeeth University, Institute of Management
-            and Research (BVIMR), New Delhi.
+            I’m Siddhant Dasgupta, a second-year BCA student at
+            Bharati Vidyapeeth University, Institute of Management and
+            Research (BVIMR), New Delhi.
           </p>
 
           <p>
-            I'm interested in artificial intelligence, software
+            I’m interested in artificial intelligence, software
             development, and exploring modern technologies through
             hands-on projects.
           </p>
@@ -458,16 +338,32 @@
           <p>
             I enjoy experimenting with new tools, building working
             prototypes, and learning by solving practical problems.
+            For me, building is one of the most effective ways to
+            understand technology and improve my skills.
           </p>
 
-          <div class="about-note">
-            CURIOUS.
-            <br />
-            CREATIVE.
-            <br />
-            ALWAYS
-            <br />
-            LEARNING.
+          <div class="about-meta">
+
+            <div>
+              <span>NAME</span>
+              <strong>SIDDHANT DASGUPTA</strong>
+            </div>
+
+            <div>
+              <span>DEGREE</span>
+              <strong>BCA</strong>
+            </div>
+
+            <div>
+              <span>YEAR</span>
+              <strong>2ND YEAR</strong>
+            </div>
+
+            <div>
+              <span>LOCATION</span>
+              <strong>NEW DELHI</strong>
+            </div>
+
           </div>
 
         </div>
@@ -477,22 +373,31 @@
     </section>
 
 
-    <!-- =========================
-         SKILLS
-    ========================== -->
+    <!-- SKILLS -->
+    <section id="skills" class="section skills-section">
 
-    <section id="skills" class="skills section">
-
-      <div class="section-heading">
+      <div class="section-header">
 
         <div class="section-number">
           02 / SKILLS
         </div>
 
+        <div class="section-line"></div>
+
+      </div>
+
+
+      <div class="skills-intro">
+
         <h2>
-          THINGS I
-          <span>WORK WITH.</span>
+          TOOLS I
+          <span>USE.</span>
         </h2>
+
+        <p>
+          Technologies I currently work with, learn from,
+          and experiment with.
+        </p>
 
       </div>
 
@@ -501,13 +406,9 @@
 
         <article class="skill-card skill-yellow">
 
-          <div class="skill-number">
-            01
-          </div>
+          <div class="skill-number">01</div>
 
-          <h3>
-            LANGUAGES
-          </h3>
+          <h3>LANGUAGES</h3>
 
           <div class="skill-list">
             <span>PYTHON</span>
@@ -523,13 +424,9 @@
 
         <article class="skill-card skill-pink">
 
-          <div class="skill-number">
-            02
-          </div>
+          <div class="skill-number">02</div>
 
-          <h3>
-            BACKEND
-          </h3>
+          <h3>BACKEND</h3>
 
           <div class="skill-list">
             <span>FASTAPI</span>
@@ -541,13 +438,9 @@
 
         <article class="skill-card skill-blue">
 
-          <div class="skill-number">
-            03
-          </div>
+          <div class="skill-number">03</div>
 
-          <h3>
-            AI
-          </h3>
+          <h3>AI</h3>
 
           <div class="skill-list">
             <span>GEMINI</span>
@@ -557,15 +450,11 @@
         </article>
 
 
-        <article class="skill-card skill-orange">
+        <article class="skill-card skill-green">
 
-          <div class="skill-number">
-            04
-          </div>
+          <div class="skill-number">04</div>
 
-          <h3>
-            DATABASE
-          </h3>
+          <h3>DATABASE</h3>
 
           <div class="skill-list">
             <span>MYSQL</span>
@@ -574,15 +463,11 @@
         </article>
 
 
-        <article class="skill-card skill-green">
+        <article class="skill-card skill-orange">
 
-          <div class="skill-number">
-            05
-          </div>
+          <div class="skill-number">05</div>
 
-          <h3>
-            TOOLS
-          </h3>
+          <h3>TOOLS</h3>
 
           <div class="skill-list">
             <span>GIT</span>
@@ -597,83 +482,50 @@
     </section>
 
 
-    <!-- =========================
-         ACHIEVEMENTS
-    ========================== -->
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="section achievements-section">
 
-    <section
-      id="achievements"
-      class="achievements section"
-    >
+      <div class="section-header">
 
-      <div class="section-number">
-        03 / ACHIEVEMENT
-      </div>
-
-      <div class="achievement-card">
-
-        <div class="achievement-left">
-
-          <div class="medal">
-            03
-          </div>
-
-          <div class="achievement-label">
-            POSITION
-          </div>
-
+        <div class="section-number">
+          03 / ACHIEVEMENTS
         </div>
 
+        <div class="section-line"></div>
 
-        <div class="achievement-main">
+      </div>
 
-          <div class="achievement-small">
-            NATIONAL-LEVEL TECHNICAL COMPETITION
+
+      <div class="achievement-wrapper">
+
+        <div class="achievement-badge">
+          3RD
+        </div>
+
+        <div class="achievement-content">
+
+          <div class="achievement-label">
+            COMPETITION RESULT
           </div>
 
           <h2>
-            3RD
-            <span>POSITION</span>
+            CODEMATHON
           </h2>
 
-          <h3>
-            CODEMATHON
-          </h3>
-
           <p>
-            ANANT — THE MATHEMATICAL SOCIETY
-            <br />
-            NATIONAL INSTITUTE OF TECHNOLOGY, KURUKSHETRA
+            Secured <strong>3rd position</strong> in CODEMATHON,
+            organized by ANANT — The Mathematical Society,
+            National Institute of Technology, Kurukshetra.
           </p>
 
           <a
             href="/certificates/codemathon-nit-kurukshetra.pdf"
             target="_blank"
-            class="certificate-button"
+            rel="noopener noreferrer"
+            class="certificate-btn"
           >
-            VIEW CERTIFICATE ↗
+            VIEW CERTIFICATE →
           </a>
-
-        </div>
-
-
-        <div class="achievement-side">
-
-          <span>
-            MATH
-          </span>
-
-          <span>
-            CODE
-          </span>
-
-          <span>
-            PROBLEM
-          </span>
-
-          <span>
-            SOLVING
-          </span>
 
         </div>
 
@@ -682,73 +534,78 @@
     </section>
 
 
-    <!-- =========================
-         EDUCATION
-    ========================== -->
+    <!-- EDUCATION -->
+    <section id="education" class="section education-section">
 
-    <section id="education" class="education section">
+      <div class="section-header">
 
-      <div class="section-number">
-        04 / EDUCATION
+        <div class="section-number">
+          04 / EDUCATION
+        </div>
+
+        <div class="section-line"></div>
+
       </div>
 
-      <h2>
-        WHERE I'M
-        <span>LEARNING.</span>
-      </h2>
 
+      <div class="education-list">
 
-      <div class="education-grid">
-
-        <article class="education-card main-education">
+        <article class="education-item">
 
           <div class="education-year">
-            2025 — 2028
+            2025—2028
           </div>
 
-          <div class="education-type">
-            CURRENT
+          <div class="education-main">
+
+            <span class="education-type">
+              CURRENT
+            </span>
+
+            <h2>
+              BACHELOR'S OF COMPUTER APPLICATIONS
+            </h2>
+
+            <p>
+              Bharati Vidyapeeth University,
+              Institute of Management and Research
+              (BVIMR), New Delhi
+            </p>
+
           </div>
 
-          <h3>
-            BACHELOR'S OF
-            <br />
-            COMPUTER
-            <br />
-            APPLICATIONS
-          </h3>
-
-          <p>
-            Bharati Vidyapeeth University,
-            Institute of Management and Research
-            (BVIMR), New Delhi
-          </p>
-
-          <div class="education-badge">
-            2ND YEAR
+          <div class="education-arrow">
+            ↗
           </div>
 
         </article>
 
 
-        <article class="education-card school-education">
+        <article class="education-item">
 
           <div class="education-year">
             2025
           </div>
 
-          <div class="education-type">
-            COMPLETED
+          <div class="education-main">
+
+            <span class="education-type">
+              CLASS XII
+            </span>
+
+            <h2>
+              DARBARILAL DAV MODEL SCHOOL
+            </h2>
+
+            <p>
+              Shalimar Bagh, New Delhi
+            </p>
+
           </div>
 
-          <h3>
-            CLASS XII
-          </h3>
-
-          <p>
-            Darbari Lal DAV Model School,
-            Shalimar Bagh
-          </p>
+          <div class="education-arrow">
+            ↗
+          </div>
 
         </article>
 
@@ -757,74 +614,98 @@
     </section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section">
 
-    <section id="contact" class="contact section">
-
-      <div class="contact-top">
+      <div class="section-header">
 
         <div class="section-number">
           05 / CONTACT
         </div>
 
-        <div class="contact-sticker">
-          LET'S
-          <br />
-          BUILD
-          <br />
-          SOMETHING.
+        <div class="section-line"></div>
+
+      </div>
+
+
+      <div class="contact-grid">
+
+        <div class="contact-heading">
+
+          <div class="contact-sticker">
+            SAY HELLO
+          </div>
+
+          <h2>
+            LET'S
+            <span>CONNECT.</span>
+          </h2>
+
+          <p>
+            Have an idea, opportunity, collaboration,
+            or just want to talk technology?
+          </p>
+
         </div>
 
-      </div>
+
+        <div class="contact-links">
+
+          <a
+            href="mailto:siddhantdasgupta2007@gmail.com"
+            class="contact-link"
+          >
+            <span>EMAIL</span>
+            siddhantdasgupta2007@gmail.com
+            <b>↗</b>
+          </a>
 
 
-      <div class="contact-content">
-
-        <h2>
-          HAVE AN
-          <br />
-          <span>IDEA?</span>
-        </h2>
-
-        <p>
-          Let's connect, exchange ideas, or talk about
-          technology and building things.
-        </p>
-
-        <a
-          href="mailto:siddhantdasgupta2007@gmail.com"
-          class="contact-email"
-        >
-          siddhantdasgupta2007@gmail.com
-          <span>↗</span>
-        </a>
-
-      </div>
+          <a
+            href="https://github.com/siddhantdasgupta2007-blip"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+          >
+            <span>GITHUB</span>
+            siddhantdasgupta2007-blip
+            <b>↗</b>
+          </a>
 
 
-      <div class="contact-links">
+          <a
+            href="https://www.linkedin.com/in/siddhant-dasgupta-837867214"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+          >
+            <span>LINKEDIN</span>
+            SIDDHANT DASGUPTA
+            <b>↗</b>
+          </a>
 
-        <a
-          href="https://github.com/siddhantdasgupta2007-blip"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GITHUB ↗
-        </a>
 
-        <a
-          href="https://www.linkedin.com/in/siddhant-dasgupta-837867214"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LINKEDIN ↗
-        </a>
+          <a
+            href="tel:7838595339"
+            class="contact-link"
+          >
+            <span>PHONE</span>
+            +91 7838595339
+            <b>↗</b>
+          </a>
 
-        <a href="tel:7838595339">
-          7838595339
-        </a>
+
+          <a
+            href="/resume/Siddhant_Dasgupta_Resume.pdf"
+            class="contact-link contact-resume"
+            download
+          >
+            <span>RESUME</span>
+            DOWNLOAD MY RESUME
+            <b>↓</b>
+          </a>
+
+        </div>
 
       </div>
 
@@ -833,23 +714,39 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
+  <!-- FOOTER -->
   <footer class="footer">
 
-    <div>
-      © 2026 SIDDHANT DASGUPTA
+    <div class="footer-top">
+
+      <div class="footer-logo">
+        SD
+      </div>
+
+      <div class="footer-text">
+        BUILT WITH CURIOSITY.<br />
+        SHIPPED WITH INTENT.
+      </div>
+
+      <a href="#home" class="back-top">
+        BACK TO TOP ↑
+      </a>
+
     </div>
 
-    <div>
-      BUILT WITH CURIOSITY + CODE
-    </div>
 
-    <a href="#home">
-      BACK TO TOP ↑
-    </a>
+    <div class="footer-bottom">
+
+      <span>
+        © <span id="current-year"></span>
+        SIDDHANT DASGUPTA
+      </span>
+
+      <span>
+        NEW DELHI, INDIA
+      </span>
+
+    </div>
 
   </footer>
 
