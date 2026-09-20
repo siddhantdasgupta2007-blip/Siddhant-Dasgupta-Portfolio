@@ -1,4 +1,4 @@
-# Siddhant Dasgupta — Neo-Brutalist Portfolio
+# Siddhant Dasgupta — Portfolio
 
 Static portfolio built with HTML, CSS and vanilla JavaScript.
 
